@@ -1,0 +1,5 @@
+template-file-path: cloudformation/basic-ec2.yaml
+parameters:
+  ImageId: ami-011899242bb902164
+  InstanceType: t3.micro
+tags: {}
