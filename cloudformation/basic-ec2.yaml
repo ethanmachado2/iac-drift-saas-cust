@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'A simple CloudFormation template to launch an EC2 instance.'
+
+Parameters:
+  InstanceType:
+    Description: EC2 instance type
+    Type: String
+    Default: t3.micro
+    AllowedValues: [t2.micro, t3.micro, t3.small]
+  
+  ImageId:
+    Description: The ID of the AMI to use (e.g., ami-0ff8a91507f77f867)
+    Type: 'AWS::EC2::Image::Id'
+
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: !Ref InstanceType
+      ImageId: !Ref ImageId
+      Tags:
+        - Key: Name
+          Value: MyCloudFormationInstance
+
+Outputs:
+  InstanceId:
+    Description: The Instance ID of the newly created EC2 instance.
+    Value: !Ref MyEC2Instance
